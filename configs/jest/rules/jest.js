@@ -18,7 +18,7 @@ module.exports = {
     'jest/no-large-snapshots': 'error',
     'jest/no-mocks-import': 'error',
     'jest/no-standalone-expect': 'error',
-    'jest/no-done-callback': 'error',
+    'jest/no-done-callback': 'off',
     'jest/no-test-prefixes': 'error',
     'jest/no-test-return-statement': 'error',
     'jest/no-truthy-falsy': 'error',
