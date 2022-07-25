@@ -51,7 +51,7 @@ For working examples, see the [demo app](./demo/App.demo.js).
 ## Demo
 
 ```bash
-$ git clone git@github.com:innovixx/eslint-config.git
+$ git clone git@github.com:Innovixx-Development/eslint-config.git
 $ yarn
 $ yarn demo
 $ open http://localhost:3000
@@ -59,4 +59,4 @@ $ open http://localhost:3000
 
 ## License
 
-[MIT](https://github.com/innovixx/eslint-config/blob/master/LICENSE) Copyright (c) Innovixx, Ltd
+[MIT](https://github.com/Innovixx-Development/eslint-config/blob/master/LICENSE) Copyright (c) Innovixx, Ltd
