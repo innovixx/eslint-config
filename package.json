@@ -1,0 +1,55 @@
+{
+  "name": "@innovixx/eslint-config",
+  "version": "1.0.0",
+  "main": "configs/index.js",
+  "repository": "git@github.com:innovixx/eslint-config.git",
+  "description": "Opinionated ESLint config for JavaScript developers",
+  "author": "service@innovixx.co.uk",
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "eslint",
+    "eslint-config",
+    "style-guide"
+  ],
+  "scripts": {
+    "build": "yarn run lint",
+    "lint": "eslint . --ignore-pattern demo/",
+    "demo": "eslint demo/"
+  },
+  "peerDependencies": {
+    "eslint": ">= 7.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "eslint-plugin-jest-dom": "^3.0.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.0"
+  },
+  "dependencies": {
+    "confusing-browser-globals": "^1.0.9",
+    "object.assign": "^4.1.0",
+    "object.entries": "^1.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-jest-dom": "^3.6.5",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "7.20.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.6"
+  },
+  "lint-staged": {
+    "*.js": "yarn lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

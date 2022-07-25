@@ -1,0 +1,6 @@
+{
+  // "extends": "./"
+  "extends": "./configs/base"
+  // "extends": "./configs/jest",
+  // "extends": "./configs/react",
+}
