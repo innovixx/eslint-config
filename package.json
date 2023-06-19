@@ -1,6 +1,6 @@
 {
   "name": "@innovixx/eslint-config",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "configs/index.js",
   "repository": "git@github.com:Innovixx-Development/eslint-config.git",
   "description": "Opinionated ESLint config for JavaScript developers",
@@ -26,6 +26,23 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint-plugin-jest": {
+      "optional": true
+    },
+    "eslint-plugin-jest-dom": {
+      "optional": true
+    },
+    "eslint-plugin-jsx-a11y": {
+      "optional": true
+    },
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    }
   },
   "dependencies": {
     "confusing-browser-globals": "^1.0.9",
