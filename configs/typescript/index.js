@@ -1,7 +1,8 @@
 module.exports = {
+  plugins: ['@typescript-eslint'],
   extends: [
-    'plugin:@typescript-eslint/recommended',
     './rules/variables',
-  ].map(require.resolve),
+    './rules/typescript',
+  ].map(require.resolve).join(['plugin:@typescript-eslint/recommended']),
   rules: {},
 };
