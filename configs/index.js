@@ -3,6 +3,7 @@ module.exports = {
     './base',
     './jest',
     './react',
+    './typescript',
   ].map(require.resolve),
   rules: {},
 };
