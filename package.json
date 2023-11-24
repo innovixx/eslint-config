@@ -26,7 +26,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.0"
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "eslint-plugin-sort-export-all": "^1.4.1"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/eslint-plugin": {
@@ -46,6 +47,9 @@
     },
     "eslint-plugin-react-hooks": {
       "optional": true
+    },
+    "eslint-plugin-sort-export-all": {
+      "optional": true
     }
   },
   "dependencies": {
@@ -63,6 +67,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "7.20.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-sort-export-all": "^1.4.1",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.6"
   },

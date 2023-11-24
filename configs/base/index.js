@@ -1,6 +1,7 @@
 module.exports = {
   plugins: [
     'node',
+    'sort-export-all',
   ],
   env: {
     node: true,
