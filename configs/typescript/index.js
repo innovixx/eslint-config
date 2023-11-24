@@ -1,8 +1,14 @@
 module.exports = {
   plugins: ['@typescript-eslint'],
   extends: [
-    './rules/variables',
     './rules/typescript',
-  ].map(require.resolve).join(['plugin:@typescript-eslint/recommended']),
+    './rules/variables',
+    'plugin:@typescript-eslint/recommended',
+  ].map((requirePath) => {
+    if (requirePath.startsWith('./')) {
+      return require.resolve(requirePath);
+    }
+    return requirePath;
+  }),
   rules: {},
 };
