@@ -14,7 +14,6 @@
   ],
   "scripts": {
     "build": "yarn run lint",
-    "lint": "eslint . --ignore-pattern demo/",
     "demo": "eslint demo/"
   },
   "peerDependencies": {
@@ -27,7 +26,8 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.0",
-    "eslint-plugin-sort-export-all": "^1.4.1"
+    "eslint-plugin-sort-export-all": "^1.4.1",
+    "eslint-plugin-sort-keys-fix": "^1.1.2"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/eslint-plugin": {
@@ -50,6 +50,9 @@
     },
     "eslint-plugin-sort-export-all": {
       "optional": true
+    },
+    "eslint-plugin-sort-keys-fix": {
+      "optional": true
     }
   },
   "dependencies": {
@@ -68,15 +71,6 @@
     "eslint-plugin-react": "7.20.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-sort-export-all": "^1.4.1",
-    "husky": "^4.2.1",
-    "lint-staged": "^10.0.6"
-  },
-  "lint-staged": {
-    "*.js": "yarn lint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "eslint-plugin-sort-keys-fix": "^1.1.2"
   }
 }

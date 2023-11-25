@@ -355,11 +355,12 @@ module.exports = {
 
     // require object keys to be sorted
     // https://eslint.org/docs/rules/sort-keys
-    'sort-keys': ['error'],
+    // https://www.npmjs.com/package/eslint-plugin-sort-keys-fix
+    'sort-keys-fix/sort-keys-fix': 'error',
 
 
     // Requires exports * to appear in alphabetical order.
     // https://github.com/nirtamir2/eslint-plugin-sort-export-all
-    'sort-export-all/sort-export-all': ['error'],
+    'sort-export-all/sort-export-all': 'error',
   },
 };
