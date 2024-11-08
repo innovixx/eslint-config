@@ -8,8 +8,11 @@
   "license": "MIT",
   "keywords": [
     "javascript",
+    "jest",
     "eslint",
     "eslint-config",
+    "react",
+    "prettier",
     "stylelint",
     "style-guide"
   ],
@@ -65,6 +68,9 @@
       "optional": true
     },
     "eslint-plugin-sort-keys-fix": {
+      "optional": true
+    },
+    "prettier": {
       "optional": true
     },
     "stylelint": {
