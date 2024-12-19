@@ -352,15 +352,5 @@ module.exports = {
 
     // require or disallow Yoda conditions
     yoda: 'error',
-
-    // require object keys to be sorted
-    // https://eslint.org/docs/rules/sort-keys
-    // https://www.npmjs.com/package/eslint-plugin-sort-keys-fix
-    'sort-keys-fix/sort-keys-fix': 'error',
-
-
-    // Requires exports * to appear in alphabetical order.
-    // https://github.com/nirtamir2/eslint-plugin-sort-export-all
-    'sort-export-all/sort-export-all': 'error',
   },
 };
