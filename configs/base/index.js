@@ -1,6 +1,8 @@
 module.exports = {
   plugins: [
     'node',
+    'eslint-plugin-sort-export-all',
+    'eslint-plugin-sort-keys-fix',
   ],
   env: {
     node: true,

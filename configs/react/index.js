@@ -6,6 +6,7 @@ module.exports = {
     'jsx-a11y',
     'react-hooks',
     'react',
+    'eslint-plugin-react-refresh',
   ],
   settings: {
     react: {
