@@ -13,11 +13,6 @@ module.exports = {
       version: 'detect',
     },
   },
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
   extends: [
     './rules/react-a11y',
     './rules/react-hooks',
