@@ -1,6 +1,6 @@
 {
   "name": "@innovixx/eslint-config",
-  "version": "3.0.0",
+  "version": "3.0.0-alpha.0",
   "repository": "git@github.com:Innovixx-Development/eslint-config.git",
   "description": "Opinionated ESLint config for JavaScript developers",
   "author": "service@innovixx.co.uk",
