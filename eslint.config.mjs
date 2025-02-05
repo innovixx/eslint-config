@@ -1,35 +1,46 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { FlatCompat } from '@eslint/eslintrc';
-import tsParser from '@typescript-eslint/parser';
-import js from '@eslint/js';
+/** @typedef {import('eslint').Linter.Config} Config */
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  allConfig: js.configs.all,
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
+import baseConfig from './config/configs/base/index.mjs';
+import reactConfig from './config/configs/react/index.mjs';
+import typescriptConfig from './config/configs/typescript/index.mjs';
+import jestConfig from './config/configs/jest/index.mjs';
 
-export default [...compat.extends('.'), {
-  languageOptions: {
-    ecmaVersion: 2020,
-    parser: tsParser,
-    parserOptions: {
-      ecmaFeatures: {
-        jsx: true,
-      },
-      project: './tsconfig.json',
-    },
-    sourceType: 'module',
+export const defaultESLintIgnores = [
+  '**/.temp',
+  '**/.*',
+  '**/.git',
+  '**/.hg',
+  '**/.pnp.*',
+  '**/.svn',
+  '**/jest.config.js',
+  '**/tsconfig.tsbuildinfo',
+  '**/README.md',
+  '**/payload-types.ts',
+  '**/dist/',
+  '**/.yarn/',
+  '**/build/',
+  '**/node_modules/',
+  '**/temp/',
+  'next-env.d.ts',
+  '**/app',
+];
+
+/** @type {Config[]} */
+export const rootEslintConfig = [
+  {
+    ignores: [
+      ...defaultESLintIgnores,
+    ],
   },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json'],
-      },
-      typescript: {},
-    },
+  {
+    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
   },
-}];
+  baseConfig,
+  reactConfig,
+  typescriptConfig,
+  jestConfig,
+];
+
+export default [
+  ...rootEslintConfig,
+];
