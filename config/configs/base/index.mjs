@@ -35,7 +35,7 @@ export const index = deepMerge(
     plugins: {
       regexp: regexpPluginConfigs,
       import: esPluginImport,
-      sortExportAllPlugin,
+      'sort-export-all': sortExportAllPlugin,
     },
   },
   {

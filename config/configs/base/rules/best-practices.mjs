@@ -345,6 +345,8 @@ const bestPracticesRules = {
     // https://eslint.org/docs/rules/require-unicode-regexp
     'require-unicode-regexp': 'off',
 
+    'sort-export-all/sort-export-all': 'warn',
+
     // requires to declare all vars on top of their containing scope
     'vars-on-top': 'error',
 
