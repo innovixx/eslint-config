@@ -1,8 +1,8 @@
 {
   "name": "@innovixx/eslint-config",
-  "version": "2.0.3-alpha.3",
+  "version": "3.0.0-alpha.0",
   "main": "configs/index.mjs",
-  "repository": "git@github.com:Innovixx-Development/eslint-config.git",
+  "repository": "git@github.com:innovixx/eslint-config.git",
   "description": "Opinionated ESLint config for JavaScript developers",
   "author": "service@innovixx.co.uk",
   "license": "MIT",
@@ -16,11 +16,30 @@
     "lint": "eslint demo/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
-    "@innovixx/eslint-plugin": "workspace:*",
     "@types/node": "^22.12.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "@eslint-react/eslint-plugin": "1.16.1",
+    "@eslint/js": "9.19.0",
+    "@types/eslint": "9.6.1",
+    "@types/eslint__js": "8.42.3",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "eslint": "9.19.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-jest-dom": "^5.5.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "eslint-plugin-sort-export-all": "^1.4.1",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-regexp": "2.6.0",
+    "globals": "15.12.0",
+    "typescript": "5.7.3",
+    "typescript-eslint": "8.23.0"
   }
 }

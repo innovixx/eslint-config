@@ -3,8 +3,8 @@ import jestDomPlugin from 'eslint-plugin-jest-dom';
 import globals from 'globals';
 import jestRules from './rules/jest.mjs';
 import jestDomRules from './rules/jest-dom.mjs';
-// eslint-disable-next-line import/extensions
-import { deepMerge } from '../../deepMerge.js';
+
+import { deepMerge } from '../../deepMerge.mjs';
 
 /** @type {import ('eslint').Linter.Config}  */
 

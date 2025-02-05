@@ -4,7 +4,7 @@ import reactExtends from './configs/react/index.mjs'
 import jestExtends from './configs/jest/index.mjs'
 import globals from 'globals'
 import typescriptParser from '@typescript-eslint/parser'
-import { deepMerge } from './deepMerge.js'
+import { deepMerge } from './deepMerge.mjs'
 
 const baseRules = {
   'class-methods-use-this': 'off',

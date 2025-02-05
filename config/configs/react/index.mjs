@@ -4,8 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 import reactRules from './rules/react.mjs';
 import reactA11yRules from './rules/react-a11y.mjs';
-// eslint-disable-next-line import/extensions
-import { deepMerge } from '../../deepMerge.js';
+import { deepMerge } from '../../deepMerge.mjs';
 import reactHooksRules from './rules/react-hooks.mjs';
 
 /** @type {import ('eslint').Linter.Config}  */
