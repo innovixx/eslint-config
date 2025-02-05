@@ -11,7 +11,6 @@ export const defaultESLintIgnores = [
   '**/.git',
   '**/.hg',
   '**/.pnp.*',
-  '**/.svn',
   '**/jest.config.js',
   '**/tsconfig.tsbuildinfo',
   '**/README.md',
@@ -22,23 +21,22 @@ export const defaultESLintIgnores = [
   '**/node_modules/',
   '**/temp/',
   'next-env.d.ts',
-  '**/app',
 ];
 
 /** @type {Config[]} */
 export const rootEslintConfig = [
+  baseConfig,
+  reactConfig,
+  typescriptConfig,
+  jestConfig,
   {
     ignores: [
       ...defaultESLintIgnores,
     ],
   },
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    files: [`**/*.{js,jsx,ts,tsx}`],
   },
-  baseConfig,
-  reactConfig,
-  typescriptConfig,
-  jestConfig,
 ];
 
 export default [

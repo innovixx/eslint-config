@@ -1,3 +1,7 @@
+import { configs as regexpPluginConfigs } from 'eslint-plugin-regexp';
+import * as esPluginImport from 'eslint-plugin-import';
+import sortExportAllPlugin from 'eslint-plugin-sort-export-all';
+// eslint-disable-next-line import/extensions
 import { deepMerge } from '../../deepMerge.js';
 import bestPracticesRules from './rules/best-practices.mjs';
 import errorRules from './rules/errors.mjs';
@@ -5,7 +9,6 @@ import es6Rules from './rules/es6.mjs';
 import importRules from './rules/imports.mjs';
 import styleRules from './rules/style.mjs';
 import variableRules from './rules/variables.mjs';
-import { configs as regexpPluginConfigs } from 'eslint-plugin-regexp'
 
 /** @type {import('eslint').Linter.Config} */
 
@@ -23,7 +26,6 @@ export const index = deepMerge(
     rules: importRules.rules,
   },
   {
-    
     rules: styleRules.rules,
   },
   {
@@ -31,10 +33,14 @@ export const index = deepMerge(
   },
   {
     plugins: {
-      'regexp': regexpPluginConfigs,
-      'import': importRules.plugins,
-    }
-  }
-)
+      regexp: regexpPluginConfigs,
+      import: esPluginImport,
+      sortExportAllPlugin,
+    },
+  },
+  {
+    settings: importRules.settings,
+  },
+);
 
 export default index;

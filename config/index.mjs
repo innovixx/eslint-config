@@ -92,18 +92,6 @@ export const rootEslintConfig = [
           jsx: true,
         }
       },
-      settings: {
-        'import/resolver': {
-          node: {
-            extensions: [
-              '.js',
-              '.jsx',
-              '.ts',
-              '.tsx',
-            ],
-          },
-        },
-      },
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {

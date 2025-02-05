@@ -21,19 +21,14 @@ const importRules = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.mjs', '.js', '.json'],
+        extensions: [
+          '.ts',
+          '.tsx',
+          '.jsx', 
+          '.js', 
+        ],
       },
     },
-    'import/extensions': [
-      '.js',
-      '.mjs',
-      '.jsx',
-    ],
-    'import/core-modules': [],
-    'import/ignore': [
-      'node_modules',
-      '\\.(coffee|scss|css|less|hbs|svg|json)$',
-    ],
   },
   rules: {
     // Static analysis:

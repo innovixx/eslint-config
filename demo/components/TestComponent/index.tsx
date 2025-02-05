@@ -1,5 +1,3 @@
 import React from 'react';
 
-export const TestComponent: React.FC = () => {
-  return <div>ComponentTest</div>;
-}
+export const TestComponent: React.FC = () => <div>ComponentTest</div>;

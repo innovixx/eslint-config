@@ -1,4 +1,4 @@
-import globals from "globals";
+import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config} */
 
@@ -6,7 +6,7 @@ const es6Rules = {
   languageOptions: {
     globals: {
       ...globals.es2015,
-    }
+    },
   },
   parserOptions: {
     ecmaVersion: 'latest',

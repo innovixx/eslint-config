@@ -13,16 +13,13 @@
     "style-guide"
   ],
   "scripts": {
-    "lint": "eslint demo/components/AnotherComponentTest/index.tsx"
+    "lint": "eslint demo/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
     "@innovixx/eslint-plugin": "workspace:*",
     "@types/node": "^22.12.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "confusing-browser-globals": "^1.0.11",
-    "object.assign": "^4.1.7",
-    "object.entries": "^1.1.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }

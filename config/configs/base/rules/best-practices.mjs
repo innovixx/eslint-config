@@ -357,4 +357,4 @@ const bestPracticesRules = {
   },
 };
 
-export default bestPracticesRules
+export default bestPracticesRules;
