@@ -137,6 +137,9 @@ const errorRules = {
     // deprecated in favor of no-unsafe-negation
     'no-negated-in-lhs': 'off',
 
+    // disallow useless backreferences in regular expressions
+    'no-useless-backreference': 'off',
+
     // Disallow assignments that can lead to race conditions due to usage of await or yield
     // https://eslint.org/docs/rules/require-atomic-updates
     // TODO: enable, semver-major
