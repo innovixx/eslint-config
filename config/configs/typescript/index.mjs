@@ -1,6 +1,5 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import * as tsImportResolver from 'eslint-import-resolver-typescript';
 import typeScriptSettings from './settings/typescript.mjs';
 import variableRules from './rules/variables.mjs';
 import { deepMerge } from '../../deepMerge.mjs';
@@ -17,7 +16,6 @@ export const index = deepMerge(
   {
     plugins: {
       '@typescript-eslint': tsPlugin,
-      'eslint-import-resolver-typescript': tsImportResolver,
     },
   },
   {
