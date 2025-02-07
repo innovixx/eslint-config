@@ -35,7 +35,7 @@ export const rootEslintConfig = [
     ],
   },
   {
-    files: [`**/*.{js,jsx,ts,tsx}`],
+    files: ['**/*.{js,jsx,ts,tsx}'],
   },
 ];
 

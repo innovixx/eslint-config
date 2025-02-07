@@ -1,10 +1,10 @@
-import tseslint from 'typescript-eslint'
-import { configs as regexpPluginConfigs } from 'eslint-plugin-regexp'
-import reactExtends from './configs/react/index.mjs'
-import jestExtends from './configs/jest/index.mjs'
-import globals from 'globals'
-import typescriptParser from '@typescript-eslint/parser'
-import { deepMerge } from './deepMerge.mjs'
+import tseslint from 'typescript-eslint';
+import { configs as regexpPluginConfigs } from 'eslint-plugin-regexp';
+import globals from 'globals';
+import typescriptParser from '@typescript-eslint/parser';
+import reactExtends from './configs/react/index.mjs';
+import jestExtends from './configs/jest/index.mjs';
+import { deepMerge } from './deepMerge.mjs';
 
 const baseRules = {
   'class-methods-use-this': 'off',
@@ -19,14 +19,14 @@ const baseRules = {
   'no-use-before-define': 'off',
   'object-shorthand': 'warn',
   'no-useless-escape': 'warn',
-}
+};
 
 const reactA11yRules = {
   'jsx-a11y/anchor-is-valid': 'warn',
   'jsx-a11y/control-has-associated-label': 'warn',
   'jsx-a11y/no-static-element-interactions': 'warn',
   'jsx-a11y/label-has-associated-control': 'warn',
-}
+};
 
 const typeScriptRules = {
   '@typescript-eslint/no-use-before-define': 'off',
@@ -73,14 +73,14 @@ const typeScriptRules = {
     },
   ],
   '@typescript-eslint/no-empty-object-type': 'warn',
-}
+};
 
 /** @typedef {import('eslint').Linter.Config} Config */
 
 /** @type {FlatConfig} */
 const baseExtends = deepMerge(
   regexpPluginConfigs['flat/recommended'],
-)
+);
 
 /** @type {Config[]} */
 export const rootEslintConfig = [
@@ -90,12 +90,12 @@ export const rootEslintConfig = [
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
-        }
+        },
       },
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
-        ...globals.node
+        ...globals.node,
       },
       parser: typescriptParser,
     },
@@ -112,8 +112,8 @@ export const rootEslintConfig = [
         rules: {
           ...baseRules,
           ...typeScriptRules,
-        }
-      }
+        },
+      },
     ),
     files: ['**/*.ts'],
   },
@@ -130,8 +130,8 @@ export const rootEslintConfig = [
           ...baseRules,
           ...typeScriptRules,
           ...reactA11yRules,
-        }
-      }
+        },
+      },
     ),
     files: ['**/*.tsx'],
   },
@@ -141,10 +141,10 @@ export const rootEslintConfig = [
       rules: {
         ...baseRules,
         ...typeScriptRules,
-      }
+      },
     }),
     files: ['**/*.test.ts', '**/*.test.tsx'],
-  }
-]
+  },
+];
 
-export default rootEslintConfig
+export default rootEslintConfig;

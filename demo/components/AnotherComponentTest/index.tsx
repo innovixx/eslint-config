@@ -1,3 +1,7 @@
 import React from 'react';
 
-export const AnotherComponentTest: React.FC = () => <div>AnotherComponentTest</div>;
+interface Props {
+  title: string;
+}
+
+export const AnotherComponentTest: React.FC<Props> = ({ title }) => <div>{title}</div>;
