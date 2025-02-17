@@ -1,7 +1,8 @@
-import * as regexpPlugin from "eslint-plugin-regexp"
+import * as regexpPlugin from 'eslint-plugin-regexp';
 import * as esPluginImport from 'eslint-plugin-import';
 import sortExportAllPlugin from 'eslint-plugin-sort-export-all';
-
+import nodePlugin from 'eslint-plugin-n';
+import globals from 'globals';
 import { deepMerge } from '../../deepMerge.mjs';
 import bestPracticesRules from './rules/best-practices.mjs';
 import errorRules from './rules/errors.mjs';
@@ -15,6 +16,13 @@ import variableRules from './rules/variables.mjs';
 
 export const index = deepMerge(
   {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
     rules: bestPracticesRules.rules,
   },
   {
@@ -25,6 +33,11 @@ export const index = deepMerge(
   },
   {
     rules: importRules.rules,
+  },
+  {
+    rules: {
+      ...nodePlugin.configs['flat/mixed-esm-and-cjs'].rules,
+    },
   },
   {
     rules: styleRules.rules,
@@ -40,6 +53,7 @@ export const index = deepMerge(
       regexp: regexpPlugin,
       import: esPluginImport,
       'sort-export-all': sortExportAllPlugin,
+      ...nodePlugin.configs['flat/recommended'].plugins,
     },
   },
   {
