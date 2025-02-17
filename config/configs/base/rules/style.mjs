@@ -351,7 +351,7 @@ const styleRules = {
     'no-spaced-func': 'error',
 
     // disallow tab characters entirely
-    'no-tabs': 'error',
+    'no-tabs': 'off',
 
     // disallow the use of ternary operators
     'no-ternary': 'off',
