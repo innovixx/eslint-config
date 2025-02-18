@@ -34,7 +34,9 @@ const variableRules = {
     'no-undefined': 'off',
 
     // disallow declaration of variables that are not used in the code
-    'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true, argsIgnorePattern: '^_' }],
+    // disabled here and enabled in typescript-eslint as it reports errors here
+    // https://typescript-eslint.io/rules/no-unused-vars/
+    'no-unused-vars': 'off',
 
     // disallow use of variables before they are defined
     'no-use-before-define': ['error', { functions: true, classes: true, variables: true }],

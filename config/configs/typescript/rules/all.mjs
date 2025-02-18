@@ -9,6 +9,15 @@ const variableRules = {
     '@typescript-eslint/no-unsafe-assignment': 'warn',
     '@typescript-eslint/prefer-nullish-coalescing': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        args: 'after-used',
+        ignoreRestSiblings: true,
+        argsIgnorePattern: '^_',
+      },
+    ],
     '@typescript-eslint/consistent-type-imports': 'warn',
   },
 };
