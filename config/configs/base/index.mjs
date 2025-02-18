@@ -1,4 +1,3 @@
-import * as regexpPlugin from 'eslint-plugin-regexp';
 import * as esPluginImport from 'eslint-plugin-import';
 import sortExportAllPlugin from 'eslint-plugin-sort-export-all';
 import nodePlugin from 'eslint-plugin-n';
@@ -9,7 +8,6 @@ import errorRules from './rules/errors.mjs';
 import es6Rules from './rules/es6.mjs';
 import importRules from './rules/imports.mjs';
 import styleRules from './rules/style.mjs';
-import regexRules from './rules/regex.mjs';
 import variableRules from './rules/variables.mjs';
 
 /** @type {import('eslint').Linter.Config} */
@@ -43,14 +41,10 @@ export const index = deepMerge(
     rules: styleRules.rules,
   },
   {
-    rules: regexRules.rules,
-  },
-  {
     rules: variableRules.rules,
   },
   {
     plugins: {
-      regexp: regexpPlugin,
       import: esPluginImport,
       'sort-export-all': sortExportAllPlugin,
       ...nodePlugin.configs['flat/recommended'].plugins,

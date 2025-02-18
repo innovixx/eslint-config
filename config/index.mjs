@@ -1,5 +1,4 @@
 import tseslint from 'typescript-eslint';
-import { configs as regexpPluginConfigs } from 'eslint-plugin-regexp';
 import globals from 'globals';
 import typescriptParser from '@typescript-eslint/parser';
 import reactExtends from './configs/react/index.mjs';
@@ -77,11 +76,6 @@ const typeScriptRules = {
 
 /** @typedef {import('eslint').Linter.Config} Config */
 
-/** @type {FlatConfig} */
-const baseExtends = deepMerge(
-  regexpPluginConfigs['flat/recommended'],
-);
-
 /** @type {Config[]} */
 export const rootEslintConfig = [
   {
@@ -104,7 +98,6 @@ export const rootEslintConfig = [
     name: 'TypeScript',
     // has 3 entries: https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/typescript-eslint/src/configs/recommended-type-checked.ts
     ...deepMerge(
-      baseExtends,
       tseslint.configs.recommendedTypeCheckedOnly[0],
       tseslint.configs.recommendedTypeCheckedOnly[1],
       tseslint.configs.recommendedTypeCheckedOnly[2],
@@ -120,7 +113,6 @@ export const rootEslintConfig = [
   {
     name: 'TypeScript-React',
     ...deepMerge(
-      baseExtends,
       tseslint.configs.recommendedTypeCheckedOnly[0],
       tseslint.configs.recommendedTypeCheckedOnly[1],
       tseslint.configs.recommendedTypeCheckedOnly[2],
