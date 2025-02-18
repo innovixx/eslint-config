@@ -9,6 +9,7 @@ const variableRules = {
     '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     '@typescript-eslint/no-unsafe-assignment': 'warn',
     '@typescript-eslint/prefer-nullish-coalescing': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
 };
 
