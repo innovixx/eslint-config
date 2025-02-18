@@ -6,10 +6,10 @@ const variableRules = {
     '@typescript-eslint/require-await': 'warn',
     '@typescript-eslint/no-floating-promises': 'warn',
     '@typescript-eslint/strict-boolean-expressions': 'warn',
-    '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     '@typescript-eslint/no-unsafe-assignment': 'warn',
     '@typescript-eslint/prefer-nullish-coalescing': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/consistent-type-imports': 'warn',
   },
 };
 
