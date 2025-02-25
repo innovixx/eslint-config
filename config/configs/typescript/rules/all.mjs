@@ -3,7 +3,6 @@
 const variableRules = {
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'warn',
-    '@typescript-eslint/prefer-nullish-coalescing': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unused-vars': [
       'warn',
