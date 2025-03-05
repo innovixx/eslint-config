@@ -37,7 +37,7 @@ For working examples, see the [demo app](./demo).
 ## Demo
 
 ```bash
-$ git clone git@github.com:Innovixx-Development/eslint-config.git
+$ git clone git@github.com:innovixx/eslint-config.git
 $ pnpm i
 $ pnpm lint
 ```
@@ -46,4 +46,4 @@ The demo directory uses the eslint config file in the [root](https://github.com/
 
 ## License
 
-[MIT](https://github.com/Innovixx-Development/eslint-config/blob/master/LICENSE) Copyright (c) Innovixx, Ltd
+[MIT](https://github.com/innovixx/eslint-config/blob/master/LICENSE) Copyright (c) Innovixx, Ltd
