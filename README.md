@@ -1,4 +1,4 @@
-# JavaScript Style Guide
+# ESLint Config Guide
 
 ## Highlights
 
