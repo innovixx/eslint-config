@@ -23,7 +23,7 @@ pnpm i -D @innovixx/eslint-config
 There are a number of configurations for consumption. For an example of a minimal base configuration:
 
 ```javascript
-import baseConfig from './config/configs/base/index.mjs';
+import baseConfig from '@innovixx/eslint-config/config/configs/base/index.mjs';
 
 export default [
 	baseConfig,
