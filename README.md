@@ -32,7 +32,6 @@ export default [
 ```
 This can then be extended to provide the React, TypeScript and Jest Configs also available in the library, as well as custom rules, plugins, and settings. For more information see the [ESLint config guide](https://eslint.org/docs/latest/use/configure/configuration-files)
 
-```javascript
 For working examples, see the [demo app](./demo).
 
 ## Demo
