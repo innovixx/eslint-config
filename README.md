@@ -8,12 +8,14 @@ An extensible config library for JavaScript developers which utilizes the [flat 
 
 ### Installation
 
-```bash
-$ npm i --save-dev @innovixx/eslint-config
-$ # or
-$ yarn add --dev @innovixx/eslint-config
-$ #or
-$ pnpm i --save-dev @innovixx/eslint-config
+```
+npm i --save-dev @innovixx/eslint-config
+```
+```
+yarn add --dev @innovixx/eslint-config
+```
+```
+pnpm i -D @innovixx/eslint-config
 ```
 
 ### Usage
