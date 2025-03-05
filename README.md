@@ -38,10 +38,10 @@ For working examples, see the [demo app](./demo).
 
 ## Demo
 
-```bash
-$ git clone git@github.com:innovixx/eslint-config.git
-$ pnpm i
-$ pnpm lint
+```
+git clone git@github.com:innovixx/eslint-config.git
+pnpm i
+pnpm lint
 ```
 
 The demo directory uses the eslint config file in the [root](https://github.com/innovixx/eslint-config/blob/master/eslint.config.mjs) of the project.
