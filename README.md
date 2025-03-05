@@ -2,7 +2,7 @@
 
 ## Highlights
 
-An extensible config library for JavaScript developers which utilizes the flat config now default in ESlint versions > 9.
+An extensible config library for JavaScript developers which utilizes the [flat config](https://eslint.org/docs/latest/use/migrate-to-9.0.0#flat-linter) now default in ESlint v9.x.
 
 ## Quick Start
 
