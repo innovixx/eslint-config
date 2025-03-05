@@ -2,60 +2,48 @@
 
 ## Highlights
 
+An extensible config library for JavaScript developers which utilizes the flat config now default in ESlint versions > 9.
+
 ## Quick Start
 
 ### Installation
 
 ```bash
 $ npm i --save-dev @innovixx/eslint-config
-$ npm info @innovixx/eslint-config peerDependencies
-$ npm i --save-dev <dependency>@<version> # for each dependency in the above output
 $ # or
 $ yarn add --dev @innovixx/eslint-config
-$ yarn info @innovixx/eslint-config peerDependencies
-$ yarn add --dev <dependency>@<version> # for each dependency in the above output
+$ #or
+$ pnpm i --save-dev @innovixx/eslint-config
 ```
 
 ### Usage
 
-There are a number of configurations for consumption, all of which are packaged together as the default export &mdash; *or they can be selectively extended, which prevents the path names [from being written shorthand](https://eslint.org/docs/developer-guide/shareable-configs#sharing-multiple-configs).*
+There are a number of configurations for consumption. For an example of a minimal base configuration:
 
 ```javascript
-{
-  "extends": "@innovixx"
-  // or selectively extend any config(s)
-  // "extends": [
-  //   "@innovixx/eslint-config/configs/base",
-  //   "@innovixx/eslint-config/configs/jest",
-  //   "@innovixx/eslint-config/configs/react",
-  // ]
-}
-```
+import baseConfig from './config/configs/base/index.mjs';
 
-If using Webpack, install and configure `eslint-loader` to have loaded files automatically linted.
+export default [
+	baseConfig,
+	{
+		files: ['**/*.{js}'],
+	},
+];
+```
+This can then be extended to provide the React, TypeScript and Jest Configs also available in the library, as well as custom rules, plugins, and settings. For more information see the [ESLint config guide](https://eslint.org/docs/latest/use/configure/configuration-files)
 
 ```javascript
-{
-  test: /\.js$/,
-  exclude: /node_modules/,
-  loader: 'eslint-loader',
-  options: {
-    fix: true,
-    emitWarning: true,
-  },
-}
-```
-
-For working examples, see the [demo app](./demo/App.demo.js).
+For working examples, see the [demo app](./demo).
 
 ## Demo
 
 ```bash
 $ git clone git@github.com:Innovixx-Development/eslint-config.git
-$ yarn
-$ yarn demo
-$ open http://localhost:3000
+$ pnpm i
+$ pnpm lint
 ```
+
+The demo directory uses the eslint config file in the [root](https://github.com/innovixx/eslint-config/blob/master/eslint.config.mjs) of the project.
 
 ## License
 
