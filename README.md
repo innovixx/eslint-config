@@ -48,4 +48,4 @@ The demo directory uses the eslint config file in the [root](https://github.com/
 
 ## License
 
-[MIT](https://github.com/innovixx/eslint-config/blob/master/LICENSE) Copyright (c) Innovixx, Ltd
+[MIT](https://github.com/innovixx/eslint-config/blob/master/LICENSE) Copyright (c) Innovixx Digital Limited
