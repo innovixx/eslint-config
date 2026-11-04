@@ -10,7 +10,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "sourceRoot": "/",
-    "jsx": "react",
+    "jsx": "react-jsx",
   },
   "exclude": [
     "node_modules",
