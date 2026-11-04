@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Props {
-  title: string;
+	title: string;
 }
 
-export const AnotherComponentTest: React.FC<Props> = ({ title }) => <div>{title}</div>;
+export const AnotherComponentTest: React.FC<Props> = ({ title }) => <div style={{ textAlign: 'center' }}>{title}</div>;
