@@ -17,17 +17,17 @@ The React configuration no longer depends on `eslint-plugin-react`.
 
 ## Compatibility
 
-The current package declares ESLint `^10.14.0` and includes TypeScript `7.0.2`. These declarations do not establish that every dependency supports that combination.
+The current package declares ESLint `^10.14.0` and TypeScript `6.0.3`.
 
 Known compatibility considerations:
 
-- `@typescript-eslint/parser@8.72.1` declares TypeScript support as `>=4.8.4 <6.1.0`. TypeScript 7 is outside that range.
-- `eslint-plugin-jsx-a11y@6.10.2` declares ESLint support through version 9, not version 10.
+- `@typescript-eslint/parser@8.72.1` supports TypeScript `>=4.8.4 <6.1.0`, which includes TypeScript `6.0.3`.
+- `eslint-plugin-jsx-a11y@6.10.2` declares ESLint support through version 9, not version 10. Its compatibility with ESLint 10 remains to be verified.
 - `eslint-plugin-react-hooks@7.1.1` declares ESLint 10 support.
 - `@eslint-react/kit` is beta and is pinned to `5.28.8` to limit unexpected API changes.
 - ESLint 10 requires a supported Node.js release: `^20.19.0`, `^22.13.0`, or `>=24`.
 
-Resolve unsupported dependency combinations before treating this configuration as a validated ESLint 10/TypeScript 7 stack. Do not suppress peer-dependency warnings as a substitute for compatibility verification.
+Using TypeScript `6.0.3` is within the declared support range of the configured TypeScript ESLint parser. This does not by itself confirm that the full dependency combination passes linting; validate it with the commands below.
 
 See the [package manifest](./package.json) for the complete dependency list.
 
