@@ -1,3 +1,5 @@
+/* eslint-disable no-continue */
+/* eslint-disable no-restricted-syntax */
 import { extname } from 'node:path';
 import eslintReactKit, { merge } from '@eslint-react/kit';
 
