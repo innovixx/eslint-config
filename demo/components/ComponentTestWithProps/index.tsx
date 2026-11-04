@@ -4,4 +4,4 @@ interface Props {
 	title: string;
 }
 
-export const AnotherComponentTest: React.FC<Props> = ({ title }) => <div style={{ textAlign: 'center' }}>{title}</div>;
+export const AnotherComponentTest: React.FC<Props> = ({ title }) => <p style={{ textAlign: 'center' }}>{title}</p>;
