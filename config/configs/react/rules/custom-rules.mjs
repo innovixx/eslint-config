@@ -182,6 +182,12 @@ function jsxFragments() {
 			context.report({
 				node,
 				message: 'Use an explicit Fragment element instead of <>...</>.',
+				fix(fixer) {
+					return [
+						fixer.replaceText(node.openingFragment, '<React.Fragment>'),
+						fixer.replaceText(node.closingFragment, '</React.Fragment>'),
+					];
+				},
 			});
 		},
 	});
@@ -227,7 +233,7 @@ function destructuringAssignment() {
 		const { query, visitor } = collect.components(context);
 
 		return merge(visitor, {
-			'Program:exit'(program) {
+			'Program:exit': function (program) {
 				for (const component of query.all(program)) {
 					const parameter = component.node.params[0];
 
@@ -245,8 +251,8 @@ function destructuringAssignment() {
 					}
 
 					for (const reference of variable.references) {
-						const identifier = reference.identifier;
-						const parent = identifier.parent;
+						const { identifier } = reference;
+						const { parent } = identifier;
 
 						if (
 							parent.type !== 'MemberExpression'
@@ -277,7 +283,7 @@ function noThisInSfc() {
 				thisExpressions.push(node);
 			},
 
-			'Program:exit'(program) {
+			'Program:exit': function (program) {
 				const components = new Set(
 					query.all(program).map((component) => component.node),
 				);
