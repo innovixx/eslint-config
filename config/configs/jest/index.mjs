@@ -9,25 +9,25 @@ import { deepMerge } from '../../deepMerge.mjs';
 /** @type {import ('eslint').Linter.Config}  */
 
 export const index = deepMerge(
-  {
-    languageOptions: {
-      globals: {
-        ...globals.jest,
-      },
-    },
-  },
-  {
-    rules: jestRules.rules,
-  },
-  {
-    rules: jestDomRules.rules,
-  },
-  {
-    plugins: {
-      jest: jestPlugin,
-      'jest-dom': jestDomPlugin,
-    },
-  },
+	{
+		languageOptions: {
+			globals: {
+				...globals.jest,
+			},
+		},
+	},
+	{
+		rules: jestRules.rules,
+	},
+	{
+		rules: jestDomRules.rules,
+	},
+	{
+		plugins: {
+			jest: jestPlugin,
+			'jest-dom': jestDomPlugin,
+		},
+	},
 );
 
 export default index;

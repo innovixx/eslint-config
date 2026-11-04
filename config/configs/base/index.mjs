@@ -13,46 +13,46 @@ import variableRules from './rules/variables.mjs';
 /** @type {import('eslint').Linter.Config} */
 
 export const index = deepMerge(
-  {
-    languageOptions: {
-      globals: {
-        ...globals.node,
-      },
-    },
-  },
-  {
-    rules: bestPracticesRules.rules,
-  },
-  {
-    rules: errorRules.rules,
-  },
-  {
-    rules: es6Rules.rules,
-  },
-  {
-    rules: importRules.rules,
-  },
-  {
-    rules: {
-      ...nodePlugin.configs['flat/mixed-esm-and-cjs'].rules,
-    },
-  },
-  {
-    rules: styleRules.rules,
-  },
-  {
-    rules: variableRules.rules,
-  },
-  {
-    plugins: {
-      import: esPluginImport,
-      'sort-export-all': sortExportAllPlugin,
-      ...nodePlugin.configs['flat/recommended'].plugins,
-    },
-  },
-  {
-    settings: importRules.settings,
-  },
+	{
+		languageOptions: {
+			globals: {
+				...globals.node,
+			},
+		},
+	},
+	{
+		rules: bestPracticesRules.rules,
+	},
+	{
+		rules: errorRules.rules,
+	},
+	{
+		rules: es6Rules.rules,
+	},
+	{
+		rules: importRules.rules,
+	},
+	{
+		rules: {
+			...nodePlugin.configs['flat/mixed-esm-and-cjs'].rules,
+		},
+	},
+	{
+		rules: styleRules.rules,
+	},
+	{
+		rules: variableRules.rules,
+	},
+	{
+		plugins: {
+			import: esPluginImport,
+			'sort-export-all': sortExportAllPlugin,
+			...nodePlugin.configs['flat/recommended'].plugins,
+		},
+	},
+	{
+		settings: importRules.settings,
+	},
 );
 
 export default index;
