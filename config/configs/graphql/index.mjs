@@ -34,14 +34,6 @@ export const graphqlConfig = [
 
 		rules: {
 			...graphqlPlugin.configs['flat/schema-recommended'].rules,
-		},
-	},
-	{
-		files: ['src/graphql/**/*.graphql'],
-		ignores: ['src/graphql/typeDefs/**'],
-
-		rules: {
-			...graphqlPlugin.configs['flat/schema-recommended'].rules,
 			'@graphql-eslint/strict-id-in-types': 'off',
 			'@graphql-eslint/require-description': 'off',
 			'@graphql-eslint/no-unreachable-types': 'warn',
@@ -50,6 +42,27 @@ export const graphqlConfig = [
 				{
 					ObjectTypeDefinition: {
 						style: 'PascalCase',
+					},
+				},
+			],
+		},
+	},
+	{
+		files: ['src/graphql/**/*.graphql'],
+		ignores: ['src/graphql/typeDefs/**'],
+
+		rules: {
+			...graphqlPlugin.configs['flat/operations-recommended'].rules,
+			'@graphql-eslint/no-anonymous-operations': 'warn',
+			'@graphql-eslint/known-type-names': 'error',
+			'@graphql-eslint/no-duplicate-fields': 'warn',
+			'@graphql-eslint/naming-convention': [
+				'warn',
+				{
+					OperationDefinition: {
+						style: 'PascalCase',
+						forbiddenPrefixes: ['Query', 'Mutation', 'Subscription', 'Get'],
+						forbiddenSuffixes: ['Query', 'Mutation', 'Subscription'],
 					},
 				},
 			],
