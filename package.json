@@ -5,6 +5,7 @@
   "repository": "git@github.com:innovixx/eslint-config.git",
   "description": "Opinionated ESLint config for JavaScript developers",
   "author": "service@innovixx.co.uk",
+  "types": "config/index.d.mts",
   "license": "MIT",
   "keywords": [
     "javascript",
