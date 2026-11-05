@@ -6,6 +6,7 @@ An opinionated, extensible ESLint flat configuration library with configurations
 
 - ESLint flat configuration.
 - Internally scoped JavaScript, TypeScript, React, and Jest configurations.
+- Type declarations for the root and public configuration modules.
 - TypeScript linting and type-aware rules.
 - Modern React 19 configuration using the automatic JSX runtime.
 - React correctness checks from `@eslint-react/eslint-plugin`.
@@ -20,7 +21,7 @@ The React configuration no longer depends on `eslint-plugin-react`.
 
 ## Compatibility
 
-The current package declares ESLint `^10.14.0` and TypeScript `6.0.3`.
+The current package declares ESLint `^10.14.0`, TypeScript `6.0.3`, and GraphQL `^16` as peer dependencies.
 
 Known compatibility considerations:
 
@@ -49,7 +50,15 @@ pnpm add -D @innovixx/eslint-config@alpha eslint@^10.14.0 typescript@6.0.3
 
 This assumes prereleases are published under the `alpha` distribution tag. Alternatively, specify an exact published prerelease version.
 
-Ensure compatible peer dependencies are installed. The package currently declares GraphQL ^16 as a required peer dependency, even for consumers that do not load the GraphQL configuration. Depending on package-manager settings, missing peers may be installed automatically or reported as unmet dependencies.
+Ensure compatible peer dependencies are installed. The package currently declares GraphQL `^16` as a required peer dependency, even for consumers that do not load the GraphQL configuration. Depending on package-manager settings, missing peers may be installed automatically or reported as unmet dependencies.
+
+For a project without GraphQL installed:
+
+```sh
+pnpm add -D graphql@^16
+```
+
+If an app uses GraphQL at runtime, keep it in the app's runtime dependencies instead. Do not install a conflicting GraphQL version merely to satisfy the lint configuration.
 
 The configuration supplies its ESLint plugins and parsers, so apps do not need to register them individually.
 
@@ -70,6 +79,8 @@ The shared base configuration already scopes itself to JavaScript and TypeScript
 To narrow its scope:
 
 ```js
+import baseConfig from '@innovixx/eslint-config/config/configs/base/index.mjs';
+
 export default [
     {
         ...baseConfig,
@@ -95,6 +106,16 @@ Base, React, TypeScript, and Jest export individual configuration objects. Graph
 React rules are scoped to JSX and TSX files. Extend that scope if the app needs React checks in plain JavaScript or TypeScript files.
 
 Jest's default scope covers `.test` files. Override it if the app uses `.spec` files or other test naming conventions.
+
+### Type declarations
+
+The root configuration and public configuration modules include adjacent `index.d.mts` declaration files.
+
+Keep importing the `.mjs` modules as shown above. TypeScript resolves their declarations automatically with compatible module resolution, such as `node16`, `nodenext`, or `bundler`.
+
+Individual configurations are typed as `Linter.Config`; the root and GraphQL configuration arrays are typed as `Linter.Config[]`.
+
+No separate `@types/innovixx__eslint-config` package or consumer-side ambient module declarations are needed. These declarations describe configuration exports; they do not change runtime linting behavior or how ESLint loads TypeScript configuration files.
 
 ### Combined configuration
 
@@ -122,7 +143,7 @@ export default [
 ];
 ```
 
-Load only the configurations the app needs. The `project: null` override disables project-based parser analysis for those configuration files; omit it if they are included in the app's TypeScript project.
+Load only the configurations the app needs. The `project: null` override disables project-based parser analysis for those configuration files; omit it if they are included in the app's TypeScript project. Rules requiring type information need corresponding overrides if enabled for those files.
 
 The [root configuration module](./config/index.mjs) exports a separate configuration array with additional overrides. It does not automatically include the modular GraphQL configuration and is not identical to the [repository ESLint configuration](./eslint.config.mjs).
 
@@ -136,9 +157,9 @@ The shared GraphQL configuration registers the parser and plugin, then selects s
 
 | Path | Behavior |
 | --- | --- |
-| `src/endpoints/**/*.graphql` | Schema recommended rules |
-| `src/graphql/typeDefs/**/*.graphql` | Schema recommended rules |
-| Other `src/graphql/**/*.graphql` files | Operations recommended rules |
+| `src/endpoints/**/*.graphql` | Schema recommended rules with shared overrides |
+| `src/graphql/typeDefs/**` | Globally ignored generated typeDefs |
+| Other `src/graphql/**/*.graphql` files | Operations recommended rules with shared overrides |
 | `**/schema.graphql` | Globally ignored by ESLint |
 | `**/generated/**` | Globally ignored by ESLint |
 
@@ -162,7 +183,14 @@ src/
       schema.graphql
 ```
 
-The operations configuration explicitly excludes `src/graphql/typeDefs/**`. Without this exclusion, schema files would also receive operations rules and could fail while loading rules that require operation documents.
+In this layout:
+
+- Endpoint GraphQL files contain source schema definitions.
+- Files under `src/graphql/typeDefs` are generated and are not linted.
+- Query files contain operations validated against the configured schema.
+- Generated schemas are reference inputs, not lint targets.
+
+Generated typeDefs are globally excluded from linting, not just from operations rules. They can still be loaded as schema inputs through GraphQL Config.
 
 The generated-directory ignore applies to all file types, including generated TypeScript, not only GraphQL.
 
@@ -170,39 +198,55 @@ These are root-relative conventions. Projects using different layouts must adapt
 
 ### Included rules
 
-Schema files use:
+Schema files start with:
 
 ```text
 flat/schema-recommended
 ```
 
-Operations use:
+Operations start with:
 
 ```text
 flat/operations-recommended
 ```
 
-Shared overrides include:
+Both receive shared overrides.
 
-- `eol-last`: warning for schema and operations files.
-- `no-anonymous-operations`: warning for operations.
-- `known-type-names`: error for operations.
-- `no-duplicate-fields`: warning for operations.
-- Operation names: PascalCase.
-- Forbidden operation prefixes: `Query`, `Mutation`, `Subscription`, `Get`.
-- Forbidden operation suffixes: `Query`, `Mutation`, `Subscription`.
+#### Schema overrides
+
+- `strict-id-in-types`: disabled.
+- `require-description`: disabled.
+- `no-unreachable-types`: warning.
+- `naming-convention`: warning, requiring PascalCase object type names only.
+- `eol-last`: warning.
+
+The explicit schema naming options replace the preset's broader naming policies. Uppercase enum values and camelCase input fields are therefore not enforced by this configuration.
+
+Other recommended schema checks remain enabled.
+
+Unreachable-type warnings may identify unused definitions or an incomplete schema reference. Check the loaded schema before dismissing them.
+
+#### Operations overrides
+
+- `no-anonymous-operations`: warning.
+- `known-type-names`: error.
+- `no-duplicate-fields`: warning.
+- `naming-convention`: warning.
+- `eol-last`: warning.
+
+Operation naming requires:
+
+- PascalCase operation names.
+- No prefixes of `Query`, `Mutation`, `Subscription`, or `Get`.
+- No suffixes of `Query`, `Mutation`, or `Subscription`.
 
 The explicit operations naming configuration replaces the recommended preset's naming options; it does not retain every naming check from that preset.
-
-Recommended schema rules introduce additional policies, including descriptions, naming conventions, and ID checks. For example, lowercase enum values can violate the recommended uppercase enum convention.
-
-Review these policies before enabling them across existing schemas. Override deliberate API conventions rather than changing public API names solely to satisfy lint.
 
 ### Schema discovery
 
 Each app owns its GraphQL Config. The shared ESLint configuration does not hard-code schema locations.
 
-Generated schemas may be ignored by ESLint while still being loaded as schema references.
+Generated schemas and typeDefs may be ignored by ESLint while still being loaded as schema references.
 
 #### Schema-only server
 
@@ -233,6 +277,7 @@ const config: IGraphQLConfig = {
         'src/graphql/**/*.graphql',
         '!src/graphql/generated/**',
         '!src/graphql/typeDefs/**',
+        '!src/graphql/**/schema.graphql',
     ],
 };
 
@@ -243,7 +288,13 @@ Operations rules can require both the schema and loaded operation documents.
 
 ESLint ignores do not automatically apply to GraphQL Config's document discovery. Exclude generated files and schema definitions from `documents` explicitly.
 
-If an app directly imports plugin types, declare the plugin as an app development dependency rather than relying on access to a transitive dependency. Alternatively, use an untyped GraphQL Config file.
+If an app directly imports plugin types, declare the plugin as an app development dependency rather than relying on access to a transitive dependency:
+
+```sh
+pnpm add -D @graphql-eslint/eslint-plugin@^4.4.2
+```
+
+Alternatively, use an untyped GraphQL Config file. The shared ESLint configuration's declarations do not re-export the plugin's `IGraphQLConfig` type.
 
 #### Server calling another API
 
@@ -285,6 +336,8 @@ export default config;
 Adjust these paths to the app's layout. Keep project file groups non-overlapping.
 
 Each API's operations must be validated against that API's schema, not automatically against the server's own schema.
+
+Including generated typeDefs in GraphQL Config's project selection does not override ESLint's global ignore.
 
 ### Code generation and linting
 
@@ -591,12 +644,34 @@ Before publishing changes to custom rules, verify both accepted and rejected exa
 - Case-insensitive duplicate attributes.
 - Escaped versus literal JSX text.
 - Explicit versus shorthand fragments.
+- Fragment fixes with and without `React` in scope.
 - Literal string refs versus object/callback refs.
 - Component props access versus unrelated functions.
 - Lexical `this` versus nested function/class contexts.
 - Filename restrictions for files included in linting.
 
 Configuration resolution alone does not establish behavioral correctness.
+
+### Declaration packaging
+
+Before publishing:
+
+```sh
+npm pack --dry-run
+```
+
+Confirm that the package includes:
+
+```text
+config/index.d.mts
+config/configs/base/index.d.mts
+config/configs/react/index.d.mts
+config/configs/typescript/index.d.mts
+config/configs/jest/index.d.mts
+config/configs/graphql/index.d.mts
+```
+
+Verify the published package in a consuming project to confirm that both root and deep configuration imports resolve without missing-declaration diagnostics.
 
 ### GraphQL validation
 
@@ -626,12 +701,14 @@ query Test {
 
 With the demo schema loaded, this should produce an `@graphql-eslint/fields-on-correct-type` error. Restore the valid selection afterward.
 
-For schema fixtures, verify that:
+For endpoint schema fixtures, verify that:
 
-- Schema recommended rules are enabled.
+- Schema recommended rules are enabled with the documented overrides.
+- `strict-id-in-types` and `require-description` are disabled.
+- `no-unreachable-types` reports warnings.
 - Operations-only rules such as `require-selections` and `executable-definitions` are absent or disabled.
 - Shared types and directives resolve against the complete schema.
-- Generated schemas are excluded from lint targets but remain available as schema references.
+- Generated schemas and generated typeDefs are excluded from lint targets but remain available as schema inputs.
 
 `--print-config` calculates configuration for a supplied path; it does not prove that the file exists, that its schema loads, or that validation succeeds.
 
@@ -648,10 +725,12 @@ This migration changes enforcement and dependency requirements:
 - Some replacement rules intentionally have narrower or different coverage.
 - GraphQL schema and operations configurations are available through one array export.
 - Recommended GraphQL presets enable more rules than the previous consumer-defined rule list.
+- Schema overrides disable strict ID and description requirements, relax naming checks, and report unreachable definitions as warnings.
 - Directory conventions determine whether GraphQL files receive schema or operations rules.
-- Generated directories and files named `schema.graphql` are globally ignored when the GraphQL configuration is loaded.
+- Generated directories, files named `schema.graphql`, and `src/graphql/typeDefs/**` are globally ignored when the GraphQL configuration is loaded.
 - Apps remain responsible for GraphQL schema/document discovery and generating required schema references.
 - Shared JavaScript, React, TypeScript, and Jest modules now contain their own file scopes.
+- The root and public configuration modules include `.d.mts` type declarations. Consumer imports remain unchanged.
 
 Consumers should review these as potentially breaking changes rather than a dependency-only upgrade.
 
