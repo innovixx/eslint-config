@@ -54,6 +54,11 @@ export const index = deepMerge(
 	{
 		settings: importRules.settings,
 	},
+	{
+		rules: {
+			'import/extensions': 'off',
+		},
+	},
 );
 
 export default index;

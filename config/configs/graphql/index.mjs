@@ -41,17 +41,15 @@ export const graphqlConfig = [
 		ignores: ['src/graphql/typeDefs/**'],
 
 		rules: {
-			...graphqlPlugin.configs['flat/operations-recommended'].rules,
-			'@graphql-eslint/no-anonymous-operations': 'warn',
-			'@graphql-eslint/known-type-names': 'error',
-			'@graphql-eslint/no-duplicate-fields': 'warn',
+			...graphqlPlugin.configs['flat/schema-recommended'].rules,
+			'@graphql-eslint/strict-id-in-types': 'off',
+			'@graphql-eslint/require-description': 'off',
+			'@graphql-eslint/no-unreachable-types': 'warn',
 			'@graphql-eslint/naming-convention': [
 				'warn',
 				{
-					OperationDefinition: {
+					ObjectTypeDefinition: {
 						style: 'PascalCase',
-						forbiddenPrefixes: ['Query', 'Mutation', 'Subscription', 'Get'],
-						forbiddenSuffixes: ['Query', 'Mutation', 'Subscription'],
 					},
 				},
 			],
