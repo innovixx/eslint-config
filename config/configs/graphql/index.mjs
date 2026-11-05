@@ -25,6 +25,18 @@ export const graphqlConfig = [
 
 		rules: {
 			'eol-last': 'warn',
+			'no-warning-comments': [
+				'error',
+				{
+					terms: [
+						'DONOTCOMMIT',
+						'DO_NOT_COMMIT',
+						'DO-NOT-COMMIT',
+						'DO NOT COMMIT',
+					],
+					location: 'anywhere',
+				},
+			],
 		},
 	},
 	{
