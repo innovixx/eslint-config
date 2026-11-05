@@ -10,6 +10,7 @@ import { deepMerge } from '../../deepMerge.mjs';
 
 export const index = deepMerge(
 	{
+		files: ['**/*.test.{js,jsx,ts,tsx}'],
 		languageOptions: {
 			globals: {
 				...globals.jest,

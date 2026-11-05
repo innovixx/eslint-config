@@ -14,6 +14,7 @@ import variableRules from './rules/variables.mjs';
 
 export const index = deepMerge(
 	{
+		files: ['**/*.{js,jsx,ts,tsx}'],
 		languageOptions: {
 			globals: {
 				...globals.node,

@@ -10,6 +10,7 @@ import { customReactConfig } from './rules/custom-rules.mjs';
 
 /** @type {import('eslint').Linter.Config} */
 export const index = {
+	files: ['**/*.{jsx,tsx}'],
 	languageOptions: {
 		globals: {
 			...globals.browser,

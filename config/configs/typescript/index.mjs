@@ -8,6 +8,7 @@ import { deepMerge } from '../../deepMerge.mjs';
 
 export const index = deepMerge(
 	{
+		files: ['**/*.{ts,tsx}'],
 		settings: typeScriptSettings.settings,
 	},
 	{
