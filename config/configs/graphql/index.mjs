@@ -6,6 +6,7 @@ export const graphqlConfig = [
 		ignores: [
 			'**/schema.graphql',
 			'**/generated/**',
+			'src/graphql/typeDefs/**',
 		],
 	},
 	{
@@ -27,10 +28,7 @@ export const graphqlConfig = [
 		},
 	},
 	{
-		files: [
-			'src/endpoints/**/*.graphql',
-			'src/graphql/typeDefs/**/*.graphql',
-		],
+		files: ['src/endpoints/**/*.graphql'],
 
 		rules: {
 			...graphqlPlugin.configs['flat/schema-recommended'].rules,
@@ -49,7 +47,6 @@ export const graphqlConfig = [
 	},
 	{
 		files: ['src/graphql/**/*.graphql'],
-		ignores: ['src/graphql/typeDefs/**'],
 
 		rules: {
 			...graphqlPlugin.configs['flat/operations-recommended'].rules,
