@@ -24,7 +24,7 @@ export const graphqlConfig = [
 		},
 
 		rules: {
-			'eol-last': 'warn',
+			'eol-last': 'error',
 			'no-warning-comments': [
 				'error',
 				{
