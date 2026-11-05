@@ -27,7 +27,10 @@ export const graphqlConfig = [
 		},
 	},
 	{
-		files: ['src/endpoints/**/*.graphql'],
+		files: [
+			'src/endpoints/**/*.graphql',
+			'src/graphql/typeDefs/**/*.graphql',
+		],
 
 		rules: {
 			...graphqlPlugin.configs['flat/schema-recommended'].rules,
@@ -35,10 +38,10 @@ export const graphqlConfig = [
 	},
 	{
 		files: ['src/graphql/**/*.graphql'],
+		ignores: ['src/graphql/typeDefs/**'],
 
 		rules: {
 			...graphqlPlugin.configs['flat/operations-recommended'].rules,
-			'eol-last': 'warn',
 			'@graphql-eslint/no-anonymous-operations': 'warn',
 			'@graphql-eslint/known-type-names': 'error',
 			'@graphql-eslint/no-duplicate-fields': 'warn',
@@ -49,9 +52,6 @@ export const graphqlConfig = [
 						style: 'PascalCase',
 						forbiddenPrefixes: ['Query', 'Mutation', 'Subscription', 'Get'],
 						forbiddenSuffixes: ['Query', 'Mutation', 'Subscription'],
-					},
-					ObjectTypeDefinition: {
-						style: 'PascalCase',
 					},
 				},
 			],
