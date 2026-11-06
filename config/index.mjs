@@ -20,13 +20,6 @@ const baseRules = {
 	'no-useless-escape': 'warn',
 };
 
-const reactA11yRules = {
-	'jsx-a11y/anchor-is-valid': 'warn',
-	'jsx-a11y/control-has-associated-label': 'warn',
-	'jsx-a11y/no-static-element-interactions': 'warn',
-	'jsx-a11y/label-has-associated-control': 'warn',
-};
-
 const typeScriptRules = {
 	'@typescript-eslint/no-use-before-define': 'off',
 
@@ -121,7 +114,6 @@ export const rootEslintConfig = [
 				rules: {
 					...baseRules,
 					...typeScriptRules,
-					...reactA11yRules,
 				},
 			},
 		),
