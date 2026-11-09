@@ -1,4 +1,4 @@
-import * as esPluginImport from 'eslint-plugin-import';
+import { importX } from 'eslint-plugin-import-x';
 import sortExportAllPlugin from 'eslint-plugin-sort-export-all';
 import nodePlugin from 'eslint-plugin-n';
 import globals from 'globals';
@@ -46,7 +46,7 @@ export const index = deepMerge(
 	},
 	{
 		plugins: {
-			import: esPluginImport,
+			'import-x': importX,
 			'sort-export-all': sortExportAllPlugin,
 			...nodePlugin.configs['flat/recommended'].plugins,
 		},
@@ -56,7 +56,7 @@ export const index = deepMerge(
 	},
 	{
 		rules: {
-			'import/extensions': 'off',
+			'import-x/extensions': 'off',
 		},
 	},
 );

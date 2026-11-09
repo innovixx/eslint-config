@@ -2,7 +2,7 @@
 
 const typeScriptSettings = {
 	settings: {
-		'import/resolver': {
+		'import-x/resolver': {
 			node: {
 				extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json'],
 			},

@@ -3,10 +3,15 @@ import tsParser from '@typescript-eslint/parser';
 import typeScriptSettings from './settings/typescript.mjs';
 import allRules from './rules/all.mjs';
 import { deepMerge } from '../../deepMerge.mjs';
+import { importX } from 'eslint-plugin-import-x';
 
 /** @type {import('eslint').Linter.Config} */
 
 export const index = deepMerge(
+	{
+		settings: importX.flatConfigs.typescript.settings,
+		rules: importX.flatConfigs.typescript.rules,
+	},
 	{
 		files: ['**/*.{ts,tsx}'],
 		settings: typeScriptSettings.settings,
