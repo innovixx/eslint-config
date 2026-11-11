@@ -1,5 +1,5 @@
 import globals from 'globals';
-import importPlugin from 'eslint-plugin-import-x';
+import importPlugin, { createNodeResolver } from 'eslint-plugin-import-x';
 
 /** @type {import('eslint').Linter.Config} */
 
@@ -19,16 +19,11 @@ const importRules = {
 		import: importPlugin,
 	},
 	settings: {
-		'import-x/resolver': {
-			node: {
-				extensions: [
-					'.ts',
-					'.tsx',
-					'.jsx',
-					'.js',
-				],
-			},
-		},
+		'import-x/resolver-next': [
+			createNodeResolver({
+				extensions: ['.ts', '.tsx', '.jsx', '.js'],
+			}),
+		],
 	},
 	rules: {
 		// Static analysis:
