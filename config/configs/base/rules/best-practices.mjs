@@ -285,6 +285,7 @@ const bestPracticesRules = {
 			allowShortCircuit: false,
 			allowTernary: false,
 			allowTaggedTemplates: false,
+			enforceForJSX: true,
 		}],
 
 		// disallow unused labels
